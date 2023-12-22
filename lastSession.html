@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"
+    ></script>
+    <style>
+      .error-message {
+        color: red;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body ng-app="myApp" ng-controller="myController">
+    <div>
+      <form name="loginForm" ng-submit="submitForm()">
+        <p>
+          Enter User Name:
+          <input
+            type="text"
+            name="username"
+            ng-model="username"
+            ng-minlength="5"
+            ng-maxlength="8"
+            required
+            placeholder="Enter User Name"
+          />
+          <span
+            class="error-message"
+            ng-show="loginForm.username.$error.required && loginForm.username.$dirty"
+            >Name required</span
+          >
+          <span
+            class="error-message"
+            ng-show="loginForm.username.$error.minlength"
+            >Minimum length must be 5</span
+          >
+          <span
+            class="error-message"
+            ng-show="loginForm.username.$error.maxlenght"
+            >Maximum length is 8</span
+          ><br /><br />
+        </p>
+        <p>
+          Enter the Password :
+          <input
+            type="password"
+            name="password"
+            ng-model="password"
+            placeholder="Enter User Password"
+            ng-minlength="5"
+            ng-maxlength="8"
+          />
+          <span
+            class="error-message"
+            ng-show="loginForm.password.$error.required && loginForm.password.$dirty"
+            >Password required</span
+          >
+          <span
+            class="error-message"
+            ng-show="loginForm.password.$error.minlength"
+            >Minimum length must be 5</span
+          >
+          <span
+            class="error-message"
+            ng-show="loginForm.password.$error.maxlenght"
+            >Maximum length is 8</span
+          ><br /><br />
+        </p>
+        <button
+          type="button"
+          ng-disabled="loginForm.$invalid"
+          ng-click="login()"
+          id="loginButton"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
